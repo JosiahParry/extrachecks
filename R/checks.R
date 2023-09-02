@@ -1,7 +1,4 @@
-#' Checks for the presence of a tag
-#'
-#' @rd an object of class `Rd` created with `tools::parse_Rd()`
-#'
+
 has_tag <- function(rd, tag) {
   any(vapply(rd, attr, character(1), "Rd_tag")  == tag)
 }
@@ -20,7 +17,10 @@ pkg_root <- function(path = ".") {
 }
 
 
-#' Check for the presence of an Rd tag
+#' Extra checks for an R package
+#'
+#' @param path default `"."`. The path to an R package.
+#' @param tag an Rd tag to check for example `"\\value`
 #' @rdname checks
 check_tag <- function(tag, path = ".") {
   root <- pkg_root(path)

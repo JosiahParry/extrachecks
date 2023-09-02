@@ -10,6 +10,7 @@ has_dontrun <- function(rd) {
 #' Check for `\dontrun` usage in examples
 #'
 #' @export
+#' @rdname checks
 check_dontrun <- function(path = ".") {
   root <- pkg_root(path)
   rds <- parse_all_rds(root)
