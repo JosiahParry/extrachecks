@@ -21,6 +21,7 @@ pkg_root <- function(path = ".") {
 
 
 #' Check for the presence of an Rd tag
+#' @rdname checks
 check_tag <- function(tag, path = ".") {
   root <- pkg_root(path)
   rds <- parse_all_rds(root)
@@ -37,16 +38,48 @@ check_tag <- function(tag, path = ".") {
 
 #' Common checks
 #' @export
+#' @rdname checks
 check_examples <- function(path = ".") {
   check_tag("\\examples", path)
 }
 
 #' @export
+#' @rdname checks
 check_return_values <- function(path = ".") {
   check_tag("\\value", path)
 }
 
 
+#' @export
+#' @rdname checks
 check_license_year <- function(path = ".") {
+  license_path <- file.path(pkg_root(path), "LICENSE")
+  if (file.exists(license_path)) {
+    cli::cli_alert_info("No {.file LICENSE} file found")
+    return(NA)
+  }
+
+  # parse license and identify line with year in it
+  lic_lines <- readLines(license_path)
+  year_index <- which(grepl("year", lic_lines, ignore.case = TRUE))
+
+  if (length(year_index) == 0 || length(year_index) > 1) {
+    cli::cli_alert_danger("Cannot determine license year")
+    return(NA)
+  }
+
+  lic_year <- as.numeric(gsub("\\D", "", lic_lines[year_index]))
+
+  cur_year <- as.numeric(format(Sys.Date(), "%Y"))
+
+  lic_current <- identical(lic_year, cur_year)
+
+  if (lic_current) {
+    cli::cli_alert_success("{.file LICENSE} year is current")
+  } else {
+    cli::cli_alert_warning("{.file LICENSE} year is out of date: {lic_year}")
+  }
+
+  invisible(lic_current)
 
 }

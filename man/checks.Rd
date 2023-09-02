@@ -2,10 +2,21 @@
 % Please edit documentation in R/checks.R
 \name{check_tag}
 \alias{check_tag}
+\alias{check_examples}
+\alias{check_return_values}
+\alias{check_license_year}
 \title{Check for the presence of an Rd tag}
 \usage{
 check_tag(tag, path = ".")
+
+check_examples(path = ".")
+
+check_return_values(path = ".")
+
+check_license_year(path = ".")
 }
 \description{
 Check for the presence of an Rd tag
+
+Common checks
 }
