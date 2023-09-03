@@ -13,6 +13,8 @@ Inspired by
 [DavisVaughan/extrachecks](https://github.com/DavisVaughan/extrachecks)
 and my own frustration in publishing packages to CRAN.
 
+Additional checks are very welcome via PR.
+
 ## Installation
 
 You can install the development version of extrachecks from
