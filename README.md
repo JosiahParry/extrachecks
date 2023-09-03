@@ -19,8 +19,8 @@ You can install the development version of extrachecks from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("JosiahParry/extrachecks")
+if (!requires("remotes") install.packages("remotes")
+remotes::install_github("JosiahParry/extrachecks")
 ```
 
 ## Example
@@ -32,5 +32,6 @@ extrachecks::extrachecks()
 #> ! \\examples missing from: `checks()`, `parse_all_rds()`, and `pkg_root()`
 #> ! \\value missing from: `checks()`, `extrachecks()`, `parse_all_rds()`, and `pkg_root()`
 #> ! \dontrun used in: `extrachecks()`
+#> fetching [ 0 / 2 ]fetching [ 1 / 2 ]                       
 #> ✔ All URLs are correct!
 ```
