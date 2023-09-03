@@ -19,7 +19,7 @@ You can install the development version of extrachecks from
 [GitHub](https://github.com/) with:
 
 ``` r
-if (!requires("remotes") install.packages("remotes")
+if (!require("remotes")) install.packages("remotes")
 remotes::install_github("JosiahParry/extrachecks")
 ```
 
