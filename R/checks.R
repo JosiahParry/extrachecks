@@ -30,7 +30,9 @@ check_tag <- function(tag, path = ".") {
   index <- which(!res)
 
   if (length(index) > 0) {
-    cli::cli_alert_warning("\\{tag} missing from: {.fn {names(res)[index]}}")
+    rd_names <- names(res)[index]
+    fps <- file.path(path, "man", paste0(rd_names, ".Rd"))
+    cli::cli_alert_warning("\\{tag} missing from: {.file {fps}}")
   }
 
   res
